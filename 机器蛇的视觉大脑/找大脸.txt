@@ -1,0 +1,2 @@
+clear all;clc;clear memory;src=imread('src.bmp');
+faceDetector = vision.CascadeObjectDetector();bbox = step(faceDetector, src);[Y_col,Ind_row]=max(bbox);if isempty(Ind_row) offset=[0,0];else maxbbox=bbox(Ind_row(1,3),:);face_midpoint = [maxbbox(1,1)+maxbbox(1,3)/2, maxbbox(1,2)+maxbbox(1,4)/2];img_y,img_x]=size(src);mid_x=img_x/2;mid_y=img_y/2;offset=[(face_midpoint(1,1)-mid_x)/mid_x,(face_midpoint(1,2)-mid_y)/mid_y];end;
